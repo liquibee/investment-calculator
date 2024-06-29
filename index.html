@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Future Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Financial Future Planner</h1>
+            <nav>
+                <button onclick="showPage('home')" class="mx-2 hover:underline">Home</button>
+                <button onclick="showPage('about')" class="mx-2 hover:underline">About</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div id="home-page">
+            <h2 class="text-3xl font-bold mb-6">Investment & Withdrawal Calculator</h2>
+            <!-- Calculator inputs and results go here (same as before) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label for="startAmount" class="block mb-2">Start Amount:</label>
+                <input type="text" id="startAmount" value="100000" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="annualReturn" class="block mb-2">Annual Return (%):</label>
+                <input type="number" id="annualReturn" value="10" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="taxRate" class="block mb-2">Tax Rate (%):</label>
+                <input type="number" id="taxRate" value="25" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="years" class="block mb-2">Number of Years:</label>
+                <input type="number" id="years" value="10" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="withdrawalFrequency" class="block mb-2">Withdrawal Frequency:</label>
+                <select id="withdrawalFrequency" class="w-full p-2 border rounded" onchange="toggleWithdrawalAmount()">
+                    <option value="none">None</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+            <div>
+                <label for="withdrawalAmount" class="block mb-2">Withdrawal Amount:</label>
+                <input type="text" id="withdrawalAmount" value="1000" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="withdrawalIncrease" class="block mb-2">Annual Withdrawal Increase (%):</label>
+                <input type="number" id="withdrawalIncrease" value="0" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="currency" class="block mb-2">Currency:</label>
+                <select id="currency" class="w-full p-2 border rounded" onchange="updateInputFormatting()">
+                    <option value="EUR">Euro (€)</option>
+                    <option value="USD">US Dollar ($)</option>
+                    <option value="GBP">British Pound (£)</option>
+                    <option value="JPY">Japanese Yen (¥)</option>
+                    <option value="CHF">Swiss Franc (CHF)</option>
+                    <option value="CAD">Canadian Dollar (C$)</option>
+                    <option value="AUD">Australian Dollar (A$)</option>
+                    <option value="CNY">Chinese Yuan (¥)</option>
+                    <option value="HKD">Hong Kong Dollar (HK$)</option>
+                    <option value="SGD">Singapore Dollar (S$)</option>
+                </select>
+            </div>
+            <div>
+                <label for="locale" class="block mb-2">Number Format:</label>
+                <select id="locale" class="w-full p-2 border rounded" onchange="updateInputFormatting()">
+                    <option value="en-US">US (1,234.56)</option>
+                    <option value="de-DE">German (1.234,56)</option>
+                    <option value="fr-FR">French (1 234,56)</option>
+                    <option value="en-GB">UK (1,234.56)</option>
+                    <option value="ja-JP">Japanese (1,234.56)</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="calculate()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Calculate</button>
+        <div class="mt-8">
+            <canvas id="investmentChart"></canvas>
+        </div>
+        <div id="result" class="mt-8 overflow-x-auto"></div>
+    </div>
+
+</div>
+
+<div id="about-page" class="hidden">
+    <h2 class="text-3xl font-bold mb-6">About Financial Future Planner</h2>
+    <p class="mb-4">Financial Future Planner is a powerful tool designed to help you visualize and plan your financial future. Our calculator takes into account various factors such as initial investment, returns, taxes, and withdrawals to provide you with a comprehensive view of your potential financial growth.</p>
+    <p class="mb-4">Whether you're planning for retirement, saving for a major purchase, or simply want to understand the long-term impact of your investment strategies, our tool can help you make informed decisions.</p>
+    <p>We're committed to providing accurate, easy-to-understand financial projections to assist you in your financial planning journey.</p>
+</div>
+
+<div id="privacy-page" class="hidden">
+    <h2 class="text-3xl font-bold mb-6">Privacy Policy</h2>
+    <p class="mb-4">At Financial Future Planner, we take your privacy seriously. This privacy policy outlines how we collect, use, and protect your personal information.</p>
+    <!-- Add more privacy policy content here -->
+</div>
+
+<div id="imprint-page" class="hidden">
+    <h2 class="text-3xl font-bold mb-6">Imprint</h2>
+    <p class="mb-4">Financial Future Planner is operated by:</p>
+    <p>Example Company Ltd.<br>123 Finance Street<br>12345 Money City<br>Country</p>
+    <!-- Add more imprint information here -->
+</div>
+
+
+<div id="faq-section" class="mt-12 bg-gray-100 p-6 rounded-lg">
+    <h2 class="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">How accurate are the projections?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">Our calculator uses the information you provide to make projections. While we strive for accuracy, actual results may vary due to market fluctuations and other factors.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">Can I save my calculations?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">Currently, we don't offer a save feature. We recommend taking screenshots or noting down your inputs and results for future reference.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">How often should I update my calculations?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">It's a good idea to revisit your calculations annually or whenever there's a significant change in your financial situation or goals.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">How does inflation affect these projections?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">Our calculator doesn't directly account for inflation. To factor in inflation, you can adjust your expected return rate to be a "real" return rate (nominal return minus expected inflation rate).</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">Can I input multiple income sources or investments?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">Currently, the calculator is designed for a single investment stream. For multiple income sources, you might need to combine them into a single input or run separate calculations.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">How was this calculator created?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">This Financial Future Planner, including its calculator and FAQ, was generated using AI within a 30-minute timeframe. It demonstrates the potential of AI in rapidly creating functional and informative web tools.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">Is financial advice provided with this tool?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">No, this tool is for educational and illustrative purposes only. It does not provide personalized financial advice. For specific financial guidance, please consult with a qualified financial advisor.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">How can AI be used in financial planning?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">AI can be used in various aspects of financial planning, including risk assessment, portfolio optimization, fraud detection, and creating personalized financial plans. However, human oversight and expertise remain crucial in financial decision-making.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">Are there plans to expand this tool's capabilities?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">While there are no immediate plans for expansion, we're always looking to improve our tools. For inquiries about custom financial planning tools or AI-generated solutions, please contact Sistemica GmbH at info@sistemica.de.</p>
+        </div>
+        <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50" onclick="toggleFAQ(this)">
+                <h3 class="font-bold text-lg">How can I learn more about AI-generated financial tools?</h3>
+                <span class="text-xl bg-blue-500 text-white w-6 h-6 flex items-center justify-center rounded-full">+</span>
+            </div>
+            <p class="p-4 bg-gray-50 hidden">For more information about AI-generated financial tools and their potential applications, please reach out to Sistemica GmbH at info@sistemica.de. They can provide insights into cutting-edge AI solutions for finance and other industries.</p>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<footer class="bg-gray-800 text-white p-4 mt-8">
+<div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div class="mb-4 md:mb-0">
+        <a href="#" onclick="showPage('privacy')" class="hover:underline mr-4">Privacy Policy</a>
+        <a href="#" onclick="showPage('imprint')" class="hover:underline mr-4">Imprint</a>
+        <span>&copy; 2024 Financial Future Planner. All rights reserved.</span>
+    </div>
+    <div class="flex space-x-4">
+        <a href="#" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+    </div>
+</div>
+</footer>
+
+<script>
+        let startAmountValue = 100000;
+        let withdrawalAmountValue = 1000;
+        let chart;
+
+        function formatCurrency(amount, currency, locale) {
+            return new Intl.NumberFormat(locale, {
+                style: 'currency',
+                currency: currency,
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function updateInputFormatting() {
+            const currency = document.getElementById('currency').value;
+            const locale = document.getElementById('locale').value;
+            const startAmountInput = document.getElementById('startAmount');
+            const withdrawalAmountInput = document.getElementById('withdrawalAmount');
+
+            startAmountInput.value = formatCurrency(startAmountValue, currency, locale);
+            withdrawalAmountInput.value = formatCurrency(withdrawalAmountValue, currency, locale);
+        }
+
+        function parseCurrencyInput(input) {
+            return parseFloat(input.replace(/[^\d.-]/g, ''));
+        }
+
+        function toggleWithdrawalAmount() {
+            const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
+            const withdrawalAmountInput = document.getElementById('withdrawalAmount');
+            const withdrawalAmountLabel = document.querySelector('label[for="withdrawalAmount"]');
+            const withdrawalIncreaseInput = document.getElementById('withdrawalIncrease');
+            const withdrawalIncreaseLabel = document.querySelector('label[for="withdrawalIncrease"]');
+
+            if (withdrawalFrequency === 'none') {
+                withdrawalAmountInput.disabled = true;
+                withdrawalAmountInput.classList.add('bg-gray-200');
+                withdrawalAmountLabel.classList.add('text-gray-500');
+                withdrawalIncreaseInput.disabled = true;
+                withdrawalIncreaseInput.classList.add('bg-gray-200');
+                withdrawalIncreaseLabel.classList.add('text-gray-500');
+            } else {
+                withdrawalAmountInput.disabled = false;
+                withdrawalAmountInput.classList.remove('bg-gray-200');
+                withdrawalAmountLabel.classList.remove('text-gray-500');
+                withdrawalIncreaseInput.disabled = false;
+                withdrawalIncreaseInput.classList.remove('bg-gray-200');
+                withdrawalIncreaseLabel.classList.remove('text-gray-500');
+            }
+        }
+
+        function calculate() {
+            const currency = document.getElementById('currency').value;
+            const locale = document.getElementById('locale').value;
+            const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
+            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100;
+            const years = parseInt(document.getElementById('years').value);
+            const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
+            const withdrawalIncrease = parseFloat(document.getElementById('withdrawalIncrease').value) / 100;
+
+            let balance = startAmountValue;
+            let tableHTML = `
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border p-2">Year</th>
+                            <th class="border p-2">Starting Balance</th>
+                            <th class="border p-2">Interest</th>
+                            <th class="border p-2">Tax</th>
+                            <th class="border p-2">Withdrawal</th>
+                            <th class="border p-2">Ending Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            const chartLabels = [];
+            const chartData = [];
+
+            for (let year = 1; year <= years; year++) {
+                const startingBalance = balance;
+                let interest = balance * annualReturn;
+                let tax = interest * taxRate;
+                let withdrawal = 0;
+
+                if (withdrawalFrequency !== 'none') {
+                    withdrawal = withdrawalAmountValue * (withdrawalFrequency === 'monthly' ? 12 : 1);
+                    withdrawalAmountValue *= (1 + withdrawalIncrease);
+                }
+
+                balance = balance + interest - tax - withdrawal;
+
+                tableHTML += `
+                    <tr class="${year % 2 === 0 ? 'bg-gray-100' : ''}">
+                        <td class="border p-2">${year}</td>
+                        <td class="border p-2">${formatCurrency(startingBalance, currency, locale)}</td>
+                        <td class="border p-2">${formatCurrency(interest, currency, locale)}</td>
+                        <td class="border p-2">${formatCurrency(tax, currency, locale)}</td>
+                        <td class="border p-2">${formatCurrency(withdrawal, currency, locale)}</td>
+                        <td class="border p-2">${formatCurrency(balance, currency, locale)}</td>
+                    </tr>
+                `;
+
+                chartLabels.push(year);
+                chartData.push(balance);
+            }
+
+            tableHTML += '</tbody></table>';
+            document.getElementById('result').innerHTML = tableHTML;
+
+            updateChart(chartLabels, chartData);
+        }
+
+        function updateChart(labels, data) {
+            const ctx = document.getElementById('investmentChart').getContext('2d');
+            
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Balance',
+                        data: data,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return formatCurrency(value, document.getElementById('currency').value, document.getElementById('locale').value);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Event listeners for input changes
+        document.getElementById('startAmount').addEventListener('change', function() {
+            startAmountValue = parseCurrencyInput(this.value);
+            updateInputFormatting();
+        });
+
+        document.getElementById('withdrawalAmount').addEventListener('change', function() {
+            withdrawalAmountValue = parseCurrencyInput(this.value);
+            updateInputFormatting();
+        });
+
+        // Initialize input formatting and withdrawal amount state
+        updateInputFormatting();
+        toggleWithdrawalAmount();
+        function showPage(pageId) {
+            const pages = ['home', 'about', 'privacy', 'imprint'];
+            pages.forEach(page => {
+                const element = document.getElementById(`${page}-page`);
+                if (page === pageId) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+        }
+
+        function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+    const plusSign = element.querySelector('span');
+    if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        plusSign.textContent = '-';
+        plusSign.classList.remove('bg-blue-500');
+        plusSign.classList.add('bg-red-500');
+    } else {
+        answer.classList.add('hidden');
+        plusSign.textContent = '+';
+        plusSign.classList.remove('bg-red-500');
+        plusSign.classList.add('bg-blue-500');
+    }
+
+}
+    </script>
+    <script defer data-domain="calculator.liquibee.com" src="https://plausible.io/js/script.js"></script>
+</body>
+</html>
