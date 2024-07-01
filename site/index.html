@@ -4,17 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Future Planner - Plan Your Financial Growth</title>
+    <title>Financial Future Planner - Plan Your Financial Growth with AI-Powered Tools</title>
     <meta name="description"
-        content="Financial Future Planner helps you visualize and plan your financial future with our powerful calculator. Understand the impact of your investment strategies.">
+        content="Discover how AI is revolutionizing financial planning. Use our Financial Future Planner to visualize your financial growth and learn about the rapid development of AI-powered tools.">
     <meta name="keywords"
-        content="financial planner, financial growth, investment calculator, retirement planning, financial strategy">
+        content="financial planner, AI-powered tools, investment calculator, retirement planning, financial strategy, web development">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://calculator.liquibee.com/">
     <link rel="stylesheet" href="https://cdn.tailwindcss.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.liquibee.com/">
+    <meta property="og:title" content="Financial Future Planner - AI-Powered Financial Growth Tools">
+    <meta property="og:description"
+        content="Plan your financial future with our AI-powered calculator. Learn how AI is transforming web development and financial planning.">
+    <meta property="og:image" content="https://calculator.liquibee.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://calculator.liquibee.com/">
+    <meta property="twitter:title" content="Financial Future Planner - AI-Powered Financial Growth Tools">
+    <meta property="twitter:description"
+        content="Plan your financial future with our AI-powered calculator. Learn how AI is transforming web development and financial planning.">
+    <meta property="twitter:image" content="https://calculator.liquibee.com/images/twitter-image.jpg">
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -48,8 +64,11 @@
                 <h1 class="text-lg font-semibold">Financial Future Planner</h1>
             </div>
             <nav>
-                <button onclick="showPage('home')" class="mx-2 hover:underline">Home</button>
-                <button onclick="showPage('about')" class="mx-2 hover:underline">About</button>
+                <a href="/" onclick="event.preventDefault(); showPage('home')" class="mx-2 hover:underline">Home</a>
+                <a href="/about" onclick="event.preventDefault(); showPage('about')"
+                    class="mx-2 hover:underline">About</a>
+                <a href="/how-it-was-done" onclick="event.preventDefault(); showPage('how-it-was-done')"
+                    class="mx-2 hover:underline">How It Was Done</a>
             </nav>
         </div>
     </header>
@@ -518,6 +537,112 @@
                 kontakt@sistemica.de.</p>
         </div>
 
+        <div id="how-it-was-done-page" class="hidden">
+            <h2 class="text-3xl font-bold mb-6">AI-Powered Rapid Prototyping: From Concept to Functional Tool in Hours</h2>
+        
+            <p class="mb-4">In the fast-paced world of product development, the ability to quickly test ideas and create functional prototypes is invaluable. This article details the journey of building the Financial Future Planner, showcasing how AI, particularly Anthropic's Sonnet 3.5 model and OpenAI's ChatGPT, can revolutionize the prototyping process. Our experience highlights both the immense potential and the current limitations of AI in rapid prototyping.</p>
+        
+            <h3 class="text-2xl font-bold mt-6 mb-3">Lean Development: Embracing Vanilla HTML and JavaScript</h3>
+        
+            <p class="mb-4">Our approach to this project was deliberately lean, focusing on vanilla HTML and JavaScript to create a lightweight, easily deployable prototype. This strategy allowed for rapid iteration and testing without the overhead of complex frameworks or build processes. The decision to use vanilla technologies proved crucial in maintaining flexibility throughout the AI-assisted development process.</p>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">From Concept to Functional Prototype: A Detailed Timeline</h4>
+            <p class="mb-4">The development process was remarkably swift, demonstrating the power of AI-assisted prototyping. Here's a detailed breakdown of our journey:</p>
+        
+            <img src="images/initial-version.png" alt="Initial version of Financial Future Planner after 5 minutes" class="mb-4 rounded-lg shadow-md float-right ml-4" style="max-width: 50%;">
+        
+            <p class="mb-4">1. <strong>Initial Prototype (5 minutes):</strong> Within the first five minutes, we had a basic structure in place. Using vanilla HTML and JavaScript, we created a rudimentary calculator that could perform basic financial projections. This rapid start was made possible by Sonnet 3.5's ability to quickly generate boilerplate code and basic functionality.</p>
+        
+            <p class="mb-4">2. <strong>Core Functionality (30 minutes):</strong> By the 30-minute mark, the application had evolved significantly. It now included a user-friendly interface with input fields for various financial parameters and displayed calculation results. Sonnet 3.5 was instrumental in rapidly implementing complex financial calculations and dynamic UI updates.</p>
+        
+            <p class="mb-4">3. <strong>Visual Enhancements (1 hour):</strong> In the next phase, we integrated Tailwind CSS for styling and Chart.js for data visualization. Sonnet 3.5 provided code snippets for Tailwind classes and Chart.js configuration, significantly speeding up the process. We maintained our commitment to a lean, easily modifiable codebase by using CDN-hosted libraries.</p>
+        
+            <p class="mb-4">4. <strong>Feature Expansion (2 hours):</strong> The final stretch saw the addition of more advanced features such as CSV exports, an informative FAQ section, and various usability enhancements. All of these were implemented using vanilla JavaScript, with Sonnet 3.5 providing guidance on best practices and efficient implementations.</p>
+        
+            <h3 class="text-2xl font-bold mt-6 mb-3">AI as a Catalyst: Comparing Sonnet 3.5 and ChatGPT</h3>
+        
+            <p class="mb-4">Our project leveraged two powerful AI models: Anthropic's Sonnet 3.5 and OpenAI's ChatGPT (GPT-4). Each brought unique strengths to the development process, but also came with their own challenges.</p>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">Sonnet 3.5: The Rapid Prototyping Powerhouse</h4>
+        
+            <p class="mb-4">Anthropic's Sonnet 3.5 played a pivotal role in the accelerated development process. It served as an intelligent coding assistant, dramatically speeding up the prototyping process in several ways:</p>
+        
+            <ul class="list-disc list-inside mb-4 ml-4">
+                <li><strong>Rapid Code Generation:</strong> Sonnet 3.5 excelled at quickly producing functional HTML and JavaScript code snippets, allowing us to implement features at an unprecedented pace.</li>
+                <li><strong>Contextual Understanding:</strong> One of Sonnet's most impressive features was its ability to understand the context of the entire project. It could make comprehensive changes across multiple files without needing detailed instructions for each modification.</li>
+                <li><strong>Problem-Solving Partner:</strong> When faced with implementation challenges, Sonnet provided valuable suggestions and alternative approaches, often leading to more elegant solutions.</li>
+                <li><strong>Documentation and Explanation:</strong> The AI assisted in creating clear, concise comments and documentation, making the code more maintainable and easier for team members to understand.</li>
+            </ul>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">ChatGPT: Powerful but Requiring More Guidance</h4>
+        
+            <p class="mb-4">While ChatGPT demonstrated impressive capabilities, it required more specific guidance compared to Sonnet 3.5:</p>
+        
+            <ul class="list-disc list-inside mb-4 ml-4">
+                <li><strong>Detailed Instructions Needed:</strong> ChatGPT often required more explicit and detailed instructions for each change. It felt more like working with a junior developer who needed step-by-step guidance.</li>
+                <li><strong>Manual Integration:</strong> With ChatGPT, we had to manually point out all changes within the source code, ensuring that every modification was applied correctly. This increased the risk of overlooking interdependencies in the code.</li>
+                <li><strong>Slower Interaction:</strong> The interaction with ChatGPT was noticeably slower, which impacted the rapid prototyping process.</li>
+            </ul>
+        
+            <h3 class="text-2xl font-bold mt-6 mb-3">Challenges and Mitigations</h3>
+        
+            <p class="mb-4">While AI-assisted development significantly accelerated our prototyping process, we encountered several challenges that required creative solutions:</p>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">1. Output Limitations with Sonnet 3.5</h4>
+            <p class="mb-4"><strong>Challenge:</strong> As our codebase grew to over 1000 lines, Sonnet 3.5 began to hit output limits, providing incomplete code snippets.</p>
+            <p class="mb-4"><strong>Mitigation:</strong> We developed a strategy of breaking down large changes into smaller, manageable chunks. For complex features, we asked Sonnet to provide high-level guidance and pseudocode, which we then implemented manually. This approach helped maintain Sonnet's contextual understanding while working within its limitations.</p>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">2. Context Drift</h4>
+            <p class="mb-4"><strong>Challenge:</strong> As we manually integrated code snippets, Sonnet's understanding of the current state of the codebase began to drift, leading to inconsistencies.</p>
+            <p class="mb-4"><strong>Mitigation:</strong> We established a practice of periodically providing Sonnet with the full, updated source code to "reset" its context. Additionally, we maintained a separate document tracking all major changes, which we could reference or provide to Sonnet as needed.</p>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">3. Performance Issues</h4>
+            <p class="mb-4"><strong>Challenge:</strong> After multiple iterations, the chat interface began to lag, slowing down the development process.</p>
+            <p class="mb-4"><strong>Mitigation:</strong> We adopted a strategy of starting new chat sessions for each major feature or after a certain number of interactions. This kept the chat history manageable and maintained responsiveness. We also saved important code snippets and explanations externally for easy reference.</p>
+        
+            <h4 class="text-xl font-bold mt-4 mb-2">4. Complexity in Number Formatting</h4>
+            <p class="mb-4"><strong>Challenge:</strong> Both AI models struggled with implementing complex number formatting across different locales and currencies.</p>
+            <p class="mb-4"><strong>Mitigation:</strong> We broke down the number formatting task into smaller, more manageable subtasks. We also leveraged external resources and documentation, using the AI models to help interpret and implement these resources rather than relying on them for the entire solution.</p>
+        
+            <h3 class="text-2xl font-bold mt-6 mb-3">Key Takeaways for AI-Assisted Rapid Prototyping</h3>
+        
+            <p class="mb-4">This project offers valuable insights into AI-assisted rapid prototyping:</p>
+        
+            <ul class="list-disc list-inside mb-4 ml-4">
+                <li><strong>Unprecedented Speed:</strong> With AI assistance, we moved from concept to functional prototype in hours rather than days or weeks, allowing for rapid testing and validation of ideas.</li>
+                <li><strong>Lean Development Synergy:</strong> The combination of a lean, vanilla JavaScript approach with AI assistance proved highly effective, maintaining a lightweight, flexible codebase that was easy to modify and deploy.</li>
+                <li><strong>AI as a Force Multiplier:</strong> The AI acted as a force multiplier, allowing a single developer to accomplish what would typically require a small team. This has significant implications for solo developers and small startups.</li>
+                <li><strong>Adaptive Workflow:</strong> Working with AI required a shift in approach, focusing more on guiding the AI, breaking down problems, and effectively integrating AI-generated solutions.</li>
+                <li><strong>AI Model Selection:</strong> Different AI models have distinct strengths. Choosing the right model for each task and knowing how to effectively prompt and guide the AI is crucial for maximizing productivity.</li>
+                <li><strong>Handling AI Limitations:</strong> Understanding and developing strategies to work around current AI limitations is essential for maintaining a smooth development process.</li>
+            </ul>
+        
+            <h3 class="text-2xl font-bold mt-6 mb-3">Conclusion: A New Era of Prototyping</h3>
+        
+            <p class="mb-4">The development of the Financial Future Planner demonstrates the transformative potential of AI in the prototyping process. By leveraging tools like Sonnet 3.5 and ChatGPT, and embracing a lean development approach, we were able to rapidly test and validate our concept, moving from idea to functional tool in a fraction of the time traditionally required.</p>
+        
+            <p class="mb-4">This approach opens up new possibilities for entrepreneurs, product managers, and developers. It allows for faster validation of ideas, more efficient use of resources, and the ability to quickly pivot based on user feedback. As AI tools continue to evolve and developers become more adept at working with them, we can expect even greater acceleration in the prototyping and product development process.</p>
+        
+            <p class="mb-4">However, it's important to note that AI-assisted development is not without its challenges. Developers must be prepared to adapt their workflows, manage AI limitations, and maintain a critical eye on the code being produced. The role of the developer is evolving from pure coding to a hybrid of coding, AI prompting, and solution architecting.</p>
+        
+            <p class="mb-4">The future of prototyping is here, and it's powered by AI. By embracing these tools, developing strategies to work with their current limitations, and adapting our workflows, we can unlock new levels of innovation and efficiency in product development. As we stand on the brink of this new era, it's an exciting time to be a developer, with AI opening up possibilities that were once thought to be years away.</p>
+
+            <!-- Share buttons -->
+            <div class="mt-8">
+                <h4 class="text-xl font-bold mb-4">Share this article:</h4>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://calculator.liquibee.com/how-it-was-done&title=AI-Powered Rapid Prototyping&summary=Discover how AI is revolutionizing rapid prototyping with this real-world demonstration of building a Financial Future Planner in hours."
+                    target="_blank" rel="noopener noreferrer"
+                    class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg mr-4 hover:bg-blue-700">
+                    <i class="fab fa-linkedin mr-2"></i>Share on LinkedIn
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https://calculator.liquibee.com/how-it-was-done&text=AI-Powered Rapid Prototyping: From Concept to Functional Tool in Hours"
+                    target="_blank" rel="noopener noreferrer"
+                    class="inline-block bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500">
+                    <i class="fab fa-twitter mr-2"></i>Share on Twitter
+                </a>
+            </div>
+        </div>
+
     </main>
 
     <footer class="bg-gray-800 text-white p-4 mt-8">
@@ -762,7 +887,7 @@
         toggleWithdrawalAmount();
 
         function showPage(pageId) {
-            const pages = ['home', 'about', 'privacy', 'imprint'];
+            const pages = ['home', 'about', 'privacy', 'imprint', 'how-it-was-done'];
             pages.forEach(page => {
                 const element = document.getElementById(`${page}-page`);
                 if (page === pageId) {
@@ -771,6 +896,13 @@
                     element.classList.add('hidden');
                 }
             });
+
+            // Update URL without reloading the page
+            if (pageId !== 'home') {
+                history.pushState(null, '', `/${pageId}`);
+            } else {
+                history.pushState(null, '', '/');
+            }
 
             // Show/hide FAQ section based on the selected page
             const faqSection = document.getElementById('faq-section');
@@ -920,7 +1052,25 @@
             input.dispatchEvent(event);
         }
 
+        function checkAndShowPage() {
+            const path = window.location.pathname;
+            if (path === '/how-it-was-done') {
+                showPage('how-it-was-done');
+            } else if (path === '/about') {
+                showPage('about');
+            } else if (path === '/privacy') {
+                showPage('privacy');
+            } else if (path === '/imprint') {
+                showPage('imprint');
+            } else {
+                showPage('home');
+            }
+        }
+
+        window.addEventListener('popstate', checkAndShowPage);
+
         document.addEventListener('DOMContentLoaded', function () {
+            checkAndShowPage();
             detectUserSettings();
             toggleWithdrawalAmount();
             document.getElementById('downloadButton').addEventListener('click', downloadCSV);
