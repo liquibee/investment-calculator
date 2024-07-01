@@ -11,8 +11,7 @@ jobs:
 
       - name: Build website
         run: |
-          mkdir public
-          cp index.html public/
+          cp -r site/ public/
 
       - name: Publish
         uses: cloudflare/pages-action@1

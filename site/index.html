@@ -4,16 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Future Planner</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Financial Future Planner - Plan Your Financial Growth</title>
+    <meta name="description" content="Financial Future Planner helps you visualize and plan your financial future with our powerful calculator. Understand the impact of your investment strategies.">
+    <meta name="keywords" content="financial planner, financial growth, investment calculator, retirement planning, financial strategy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calculator.liquibee.com/">
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
     <header class="bg-blue-600 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Financial Future Planner</h1>
+            <div class="flex items-center">
+                <img src="logo.png" alt="Financial Future Planner Logo" class="h-10 mr-3">
+                <h1 class="text-lg font-semibold">Financial Future Planner</h1>
+            </div>
             <nav>
                 <button onclick="showPage('home')" class="mx-2 hover:underline">Home</button>
                 <button onclick="showPage('about')" class="mx-2 hover:underline">About</button>
@@ -60,8 +67,12 @@
                     <input type="number" id="annualReturn" value="10" class="w-full p-2 border rounded">
                 </div>
                 <div>
-                    <label for="taxRate" class="block mb-2">Tax Rate (%):</label>
-                    <input type="number" id="taxRate" value="25" class="w-full p-2 border rounded">
+                    <label for="costs" class="block mb-2">Costs (yearly %):</label>
+                    <input type="number" id="costs" value="5" class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label for="withdrawalTax" class="block mb-2">Withdrawal Tax (%):</label>
+                    <input type="number" id="withdrawalTax" value="0" class="w-full p-2 border rounded">
                 </div>
                 <div>
                     <label for="years" class="block mb-2">Number of Years:</label>
@@ -144,7 +155,12 @@
                                 <path d="M12 8v8M8 12h8" stroke="white" stroke-width="2" stroke-linecap="round" />
                             </svg>
                         </div>
-                        <p class="p-4 bg-gray-50 hidden">Yes, you can save your calculations by downloading them as a CSV file. After performing a calculation, you'll see a download button at the top right of the results table. Clicking this button will allow you to save a CSV file containing all the calculated data. This file can be opened in spreadsheet software for further analysis or record-keeping. Additionally, you can always take screenshots or note down your inputs for future reference.</p>
+                        <p class="p-4 bg-gray-50 hidden">Yes, you can save your calculations by downloading them as a
+                            CSV file. After performing a calculation, you'll see a download button at the top right of
+                            the results table. Clicking this button will allow you to save a CSV file containing all the
+                            calculated data. This file can be opened in spreadsheet software for further analysis or
+                            record-keeping. Additionally, you can always take screenshots or note down your inputs for
+                            future reference.</p>
                     </div>
                     <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
                         <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50"
@@ -345,45 +361,56 @@
                 61352 Bad Homburg vor der Höhe<br>
                 Germany
             </p>
-            
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Represented by</h3>
             <p class="mb-4">Hannes Lehmann</p>
-            
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Contact</h3>
             <p class="mb-4">
                 Phone: +49 (0) 6172 2658572<br>
                 E-mail: kontakt@sistemica.de
             </p>
-            
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Register entry</h3>
             <p class="mb-4">
                 Entry in the Handelsregister.<br>
                 Register Court: Amtsgericht Frankfurt<br>
                 Register Number: HRB 107421
             </p>
-            
+
             <h3 class="text-2xl font-bold mt-6 mb-3">VAT ID</h3>
             <p class="mb-4">
                 VAT identification number according to §27 a Umsatzsteuergesetz:<br>
                 DE 310431641
             </p>
-            
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Dispute resolution</h3>
-            <p class="mb-4">The European Commission provides a platform for online dispute resolution (OS): http://ec.europa.eu/consumers/odr</p>
+            <p class="mb-4">The European Commission provides a platform for online dispute resolution (OS):
+                http://ec.europa.eu/consumers/odr</p>
             <p class="mb-4">Our email address can be found above in the imprint.</p>
-            <p class="mb-4">We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
-            
+            <p class="mb-4">We are not willing or obliged to participate in dispute resolution proceedings before a
+                consumer arbitration board.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Liability for Contents</h3>
-            <p class="mb-4">As a service provider, we are responsible for our own content on these pages in accordance with § 7 paragraph 1 TMG under the general laws. However, according to §§ 8 to 10 TMG, we are not obligated to monitor transmitted or stored foreign information or to investigate circumstances that indicate illegal activity.</p>
-            
+            <p class="mb-4">As a service provider, we are responsible for our own content on these pages in accordance
+                with § 7 paragraph 1 TMG under the general laws. However, according to §§ 8 to 10 TMG, we are not
+                obligated to monitor transmitted or stored foreign information or to investigate circumstances that
+                indicate illegal activity.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Liability for Links</h3>
-            <p class="mb-4">Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the contents of the linked pages.</p>
-            
+            <p class="mb-4">Our offer contains links to external websites of third parties, on whose contents we have no
+                influence. Therefore, we cannot assume any liability for these external contents. The respective
+                provider or operator of the pages is always responsible for the contents of the linked pages.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Copyright</h3>
-            <p class="mb-4">The contents and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, or any form of commercialization of such material beyond the scope of the copyright law shall require the prior written consent of its respective author or creator.</p>
-            
+            <p class="mb-4">The contents and works created by the site operators on these pages are subject to German
+                copyright law. Duplication, processing, distribution, or any form of commercialization of such material
+                beyond the scope of the copyright law shall require the prior written consent of its respective author
+                or creator.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Scope</h3>
-            <p class="mb-4">This imprint also applies to the company's and product's profiles on various so-called "social network" pages:</p>
+            <p class="mb-4">This imprint also applies to the company's and product's profiles on various so-called
+                "social network" pages:</p>
             <ul class="list-disc list-inside mb-4">
                 <li>Xing: https://www.xing.com/</li>
                 <li>LinkedIn: https://www.linkedin.com/</li>
@@ -394,14 +421,22 @@
 
         <div id="privacy-page" class="hidden">
             <h2 class="text-3xl font-bold mb-6">Privacy Policy</h2>
-            <p class="mb-4">The operators of these pages take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.</p>
-            
+            <p class="mb-4">The operators of these pages take the protection of your personal data very seriously. We
+                treat your personal data confidentially and in accordance with the statutory data protection regulations
+                and this privacy policy.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Data Collection and Usage</h3>
-            <p class="mb-4">The use of our website is generally possible without providing personal data. As far as personal data (for example name, address or e-mail addresses) is collected on our pages, this is always done on a voluntary basis where possible. This data will not be passed on to third parties without your express consent.</p>
-            <p class="mb-4">The Financial Future Planner is a client-side tool. All calculations and data processing occur in your browser. We do not collect, store, or transmit any of your financial data or calculation results.</p>
-            
+            <p class="mb-4">The use of our website is generally possible without providing personal data. As far as
+                personal data (for example name, address or e-mail addresses) is collected on our pages, this is always
+                done on a voluntary basis where possible. This data will not be passed on to third parties without your
+                express consent.</p>
+            <p class="mb-4">The Financial Future Planner is a client-side tool. All calculations and data processing
+                occur in your browser. We do not collect, store, or transmit any of your financial data or calculation
+                results.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Server Log Files</h3>
-            <p class="mb-4">The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:</p>
+            <p class="mb-4">The provider of the pages automatically collects and stores information in so-called server
+                log files, which your browser automatically transmits to us. These are:</p>
             <ul class="list-disc list-inside mb-4">
                 <li>Browser type and browser version</li>
                 <li>Used operating system</li>
@@ -409,15 +444,23 @@
                 <li>Hostname of the accessing computer</li>
                 <li>Time of the server request</li>
             </ul>
-            <p class="mb-4">This data cannot be assigned to specific persons. A consolidation of this data with other data sources is not carried out. We reserve the right to check this data retrospectively if we become aware of concrete indications of illegal use.</p>
-            
+            <p class="mb-4">This data cannot be assigned to specific persons. A consolidation of this data with other
+                data sources is not carried out. We reserve the right to check this data retrospectively if we become
+                aware of concrete indications of illegal use.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Analytics</h3>
-            <p class="mb-4">This website uses Plausible Analytics, a privacy-friendly analytics tool. Plausible does not use cookies and does not collect any personal data. It only collects anonymous usage data to help us understand how our website is used and to improve our services.</p>
-            
+            <p class="mb-4">This website uses Plausible Analytics, a privacy-friendly analytics tool. Plausible does not
+                use cookies and does not collect any personal data. It only collects anonymous usage data to help us
+                understand how our website is used and to improve our services.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">SSL Encryption</h3>
-            <p class="mb-4">This site uses SSL encryption for security reasons and to protect the transmission of confidential content, such as the requests you send to us as the site operator. You can recognize an encrypted connection by the fact that the address line of the browser changes from "http://" to "https://" and by the lock symbol in your browser line.</p>
-            <p class="mb-4">If SSL encryption is activated, the data you transmit to us cannot be read by third parties.</p>
-            
+            <p class="mb-4">This site uses SSL encryption for security reasons and to protect the transmission of
+                confidential content, such as the requests you send to us as the site operator. You can recognize an
+                encrypted connection by the fact that the address line of the browser changes from "http://" to
+                "https://" and by the lock symbol in your browser line.</p>
+            <p class="mb-4">If SSL encryption is activated, the data you transmit to us cannot be read by third parties.
+            </p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">External Dependencies</h3>
             <p class="mb-4">Our tool uses the following external resources:</p>
             <ul class="list-disc list-inside mb-4">
@@ -425,16 +468,21 @@
                 <li>Chart.js for generating charts</li>
                 <li>Font Awesome for icons</li>
             </ul>
-            <p class="mb-4">These resources are loaded from their respective CDNs and may be subject to their own privacy policies.</p>
-            
+            <p class="mb-4">These resources are loaded from their respective CDNs and may be subject to their own
+                privacy policies.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Hosting</h3>
-            <p class="mb-4">Our website is hosted on Cloudflare. Cloudflare may collect technical information related to your visit as part of its service operations. For more information, please refer to Cloudflare's privacy policy.</p>
-            
+            <p class="mb-4">Our website is hosted on Cloudflare. Cloudflare may collect technical information related to
+                your visit as part of its service operations. For more information, please refer to Cloudflare's privacy
+                policy.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Changes to This Privacy Policy</h3>
-            <p class="mb-4">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-            
+            <p class="mb-4">We may update our Privacy Policy from time to time. We will notify you of any changes by
+                posting the new Privacy Policy on this page.</p>
+
             <h3 class="text-2xl font-bold mt-6 mb-3">Contact Us</h3>
-            <p class="mb-4">If you have any questions about this Privacy Policy, please contact us at kontakt@sistemica.de.</p>
+            <p class="mb-4">If you have any questions about this Privacy Policy, please contact us at
+                kontakt@sistemica.de.</p>
         </div>
 
     </main>
@@ -447,9 +495,10 @@
                 <span>&copy; 2024 sistemica GmbH. All rights reserved.</span>
             </div>
             <div class="flex space-x-4">
-                <a href="https://www.linkedin.com/company/sistemica" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/company/sistemica" class="hover:text-blue-400"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/sistemicaGmbH" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/hannes-sistemica" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
@@ -515,12 +564,17 @@
             const startAmountInput = document.getElementById('startAmount');
             const withdrawalAmountInput = document.getElementById('withdrawalAmount');
 
-            startAmountInput.value = formatCurrency(startAmountValue, currency, locale);
-            withdrawalAmountInput.value = formatCurrency(withdrawalAmountValue, currency, locale);
+            // Only format if the input is not focused
+            if (document.activeElement !== startAmountInput) {
+                startAmountInput.value = formatCurrency(startAmountValue, currency, locale);
+            }
+            if (document.activeElement !== withdrawalAmountInput) {
+                withdrawalAmountInput.value = formatCurrency(withdrawalAmountValue, currency, locale);
+            }
         }
 
         function parseCurrencyInput(input) {
-            return parseFloat(input.replace(/[^\d.-]/g, ''));
+            return parseFloat(input.replace(/[^\d.]/g, ''));
         }
 
         function toggleWithdrawalAmount() {
@@ -548,76 +602,88 @@
         }
 
         function calculate() {
-            const currency = document.getElementById('currency').value;
-            const locale = document.getElementById('locale').value;
-            const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
-            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100;
-            const years = parseInt(document.getElementById('years').value);
-            const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
-            const withdrawalIncrease = parseFloat(document.getElementById('withdrawalIncrease').value) / 100;
+    const currency = document.getElementById('currency').value;
+    const locale = document.getElementById('locale').value;
+    const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
+    const costs = parseFloat(document.getElementById('costs').value) / 100;
+    const withdrawalTax = parseFloat(document.getElementById('withdrawalTax').value) / 100;
+    const years = parseInt(document.getElementById('years').value);
+    const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
+    const withdrawalIncrease = parseFloat(document.getElementById('withdrawalIncrease').value) / 100;
 
-            let balance = startAmountValue;
-            let tableHTML = `
-        <div class="relative">
-            <button id="downloadCSV" class="absolute top-2 right-2 p-2 bg-green-500 text-white rounded-full hover:bg-green-600" title="Download CSV">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-            </button>
-            <table class="w-full border-collapse">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border p-2">Year</th>
-                        <th class="border p-2">Starting Balance</th>
-                        <th class="border p-2">Interest</th>
-                        <th class="border p-2">Tax</th>
-                        <th class="border p-2">Withdrawal</th>
-                        <th class="border p-2">Ending Balance</th>
-                    </tr>
-                </thead>
-                <tbody>
-    `;
+    let balance = startAmountValue;
+    let totalWithdrawalTax = 0;
+    let totalCosts = 0;
 
-            const chartLabels = [];
-            const chartData = [];
-            let currentWithdrawalAmount = withdrawalAmountValue;
-
-            for (let year = 1; year <= years; year++) {
-                const startingBalance = balance;
-                let interest = balance * annualReturn;
-                let tax = interest * taxRate;
-                let withdrawal = 0;
-
-                if (withdrawalFrequency !== 'none') {
-                    withdrawal = currentWithdrawalAmount * (withdrawalFrequency === 'monthly' ? 12 : 1);
-                    currentWithdrawalAmount *= (1 + withdrawalIncrease);
-                }
-
-                balance = balance + interest - tax - withdrawal;
-
-                tableHTML += `
-            <tr class="${year % 2 === 0 ? 'bg-gray-100' : ''}">
-                <td class="border p-2">${year}</td>
-                <td class="border p-2">${formatCurrency(startingBalance, currency, locale)}</td>
-                <td class="border p-2">${formatCurrency(interest, currency, locale)}</td>
-                <td class="border p-2">${formatCurrency(tax, currency, locale)}</td>
-                <td class="border p-2">${formatCurrency(withdrawal, currency, locale)}</td>
-                <td class="border p-2">${formatCurrency(balance, currency, locale)}</td>
+    let tableHTML = `
+<div class="relative">
+    <button id="downloadCSV" class="absolute top-2 right-2 p-2 bg-green-500 text-white rounded-full hover:bg-green-600" title="Download CSV">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+    </button>
+    <table class="w-full border-collapse">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border p-2">Year</th>
+                <th class="border p-2">Starting Balance</th>
+                <th class="border p-2">Interest</th>
+                <th class="border p-2">Costs</th>
+                <th class="border p-2">Withdrawal</th>
+                <th class="border p-2">Withdrawal Tax</th>
+                <th class="border p-2">Ending Balance</th>
+                <th class="border p-2">Total Taxes & Costs</th>
             </tr>
-        `;
+        </thead>
+        <tbody>
+`;
 
-                chartLabels.push(year);
-                chartData.push(balance);
-            }
+    const chartLabels = [];
+    const chartData = [];
+    let currentWithdrawalAmount = withdrawalAmountValue;
 
-            tableHTML += '</tbody></table></div>';
-            document.getElementById('result').innerHTML = tableHTML;
+    for (let year = 1; year <= years; year++) {
+        const startingBalance = balance;
+        let interest = balance * annualReturn;
+        let yearCosts = balance * costs;
+        let withdrawal = 0;
+        let withdrawalTaxAmount = 0;
 
-            updateChart(chartLabels, chartData);
-
-            // Add event listener to the download button after it's created
-            document.getElementById('downloadCSV').addEventListener('click', showCSVPopup);
+        if (withdrawalFrequency !== 'none') {
+            withdrawal = currentWithdrawalAmount * (withdrawalFrequency === 'monthly' ? 12 : 1);
+            withdrawalTaxAmount = withdrawal * withdrawalTax;
+            currentWithdrawalAmount *= (1 + withdrawalIncrease);
         }
+
+        balance = balance + interest - yearCosts - withdrawal - withdrawalTaxAmount;
+
+        totalCosts += yearCosts;
+        totalWithdrawalTax += withdrawalTaxAmount;
+
+        tableHTML += `
+    <tr class="${year % 2 === 0 ? 'bg-gray-100' : ''}">
+        <td class="border p-2">${year}</td>
+        <td class="border p-2">${formatCurrency(startingBalance, currency, locale)}</td>
+        <td class="border p-2">${formatCurrency(interest, currency, locale)}</td>
+        <td class="border p-2">${formatCurrency(yearCosts, currency, locale)}</td>
+        <td class="border p-2">${formatCurrency(withdrawal, currency, locale)}</td>
+        <td class="border p-2">${formatCurrency(withdrawalTaxAmount, currency, locale)}</td>
+        <td class="border p-2">${formatCurrency(balance, currency, locale)}</td>
+        <td class="border p-2">${formatCurrency(totalWithdrawalTax + totalCosts, currency, locale)}</td>
+    </tr>
+`;
+
+        chartLabels.push(year);
+        chartData.push(balance);
+    }
+
+    tableHTML += '</tbody></table></div>';
+    document.getElementById('result').innerHTML = tableHTML;
+
+    updateChart(chartLabels, chartData);
+
+    document.getElementById('downloadCSV').addEventListener('click', showCSVPopup);
+}
 
         function updateChart(labels, data) {
             const ctx = document.getElementById('investmentChart').getContext('2d');
@@ -653,15 +719,22 @@
             });
         }
 
-        // Event listeners for input changes
-        document.getElementById('startAmount').addEventListener('change', function () {
+        document.getElementById('startAmount').addEventListener('blur', function () {
             startAmountValue = parseCurrencyInput(this.value);
             updateInputFormatting();
         });
 
-        document.getElementById('withdrawalAmount').addEventListener('change', function () {
+        document.getElementById('withdrawalAmount').addEventListener('blur', function () {
             withdrawalAmountValue = parseCurrencyInput(this.value);
             updateInputFormatting();
+        });
+
+        document.getElementById('startAmount').addEventListener('focus', function () {
+            this.value = startAmountValue;
+        });
+
+        document.getElementById('withdrawalAmount').addEventListener('focus', function () {
+            this.value = withdrawalAmountValue;
         });
 
         // Initialize input formatting and withdrawal amount state
@@ -763,7 +836,7 @@
             const downloadButton = document.getElementById('downloadButton');
             const countdownText = document.getElementById('countdownText');
             const downloadButtonText = document.getElementById('downloadButtonText');
-            let secondsLeft = 5;
+            let secondsLeft = 1;
 
             downloadButton.disabled = true;
             downloadButton.classList.remove('bg-green-500', 'hover:bg-green-600');
@@ -785,29 +858,37 @@
         }
 
         function downloadCSV() {
-            hideCSVPopup();
-            const currency = document.getElementById('currency').value;
-            const locale = document.getElementById('locale').value;
+    hideCSVPopup();
 
-            let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "Year,Starting Balance,Interest,Tax,Withdrawal,Ending Balance\n";
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Year,Starting Balance,Interest,Costs,Withdrawal,Withdrawal Tax,Ending Balance,Total Taxes & Costs\n";
 
-            const rows = document.querySelectorAll("#result table tbody tr");
-            rows.forEach(row => {
-                const cells = row.querySelectorAll("td");
-                const rowData = Array.from(cells).map(cell => cell.textContent.trim().replace(/,/g, '')).join(",");
-                csvContent += rowData + "\n";
-            });
+    const rows = document.querySelectorAll("#result table tbody tr");
+    rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const rowData = Array.from(cells).map((cell, index) => {
+            // Remove all separators (currency symbols, commas, periods, hyphens, etc.) except for the year column
+            let cellText = cell.textContent.trim();
+            if (index !== 0) { // Skip the year column
+                cellText = cellText.replace(/[^0-9]/g, ''); // Remove everything except digits
+                // If the cellText is numeric, convert to a standard format and divide by 100
+                if (!isNaN(cellText) && cellText !== '') {
+                    cellText = (parseFloat(cellText) / 100).toFixed(2);
+                }
+            }
+            return cellText;
+        }).join(",");
+        csvContent += rowData + "\n";
+    });
 
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "financial_projection.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "financial_projection.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
         // Update the event listeners in the DOMContentLoaded event
         document.addEventListener('DOMContentLoaded', function () {
             detectUserSettings();
