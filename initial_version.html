@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Investment Calculator</h1>
+    <div>
+        <label for="startAmount">Start Amount (€):</label>
+        <input type="number" id="startAmount" value="100000">
+    </div>
+    <div>
+        <label for="annualReturn">Annual Return (%):</label>
+        <input type="number" id="annualReturn" value="10">
+    </div>
+    <div>
+        <label for="taxRate">Tax Rate (%):</label>
+        <input type="number" id="taxRate" value="25">
+    </div>
+    <div>
+        <label for="years">Number of Years:</label>
+        <input type="number" id="years" value="10">
+    </div>
+    <div>
+        <label for="withdrawalFrequency">Withdrawal Frequency:</label>
+        <select id="withdrawalFrequency">
+            <option value="none">None</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+        </select>
+    </div>
+    <div>
+        <label for="withdrawalAmount">Withdrawal Amount (€):</label>
+        <input type="number" id="withdrawalAmount" value="1000">
+    </div>
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            const startAmount = parseFloat(document.getElementById('startAmount').value);
+            const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
+            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100;
+            const years = parseInt(document.getElementById('years').value);
+            const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
+            const withdrawalAmount = parseFloat(document.getElementById('withdrawalAmount').value);
+
+            let balance = startAmount;
+            let tableHTML = '<table><tr><th>Year</th><th>Starting Balance</th><th>Interest</th><th>Tax</th><th>Withdrawal</th><th>Ending Balance</th></tr>';
+
+            for (let year = 1; year <= years; year++) {
+                const startingBalance = balance;
+                let interest = balance * annualReturn;
+                let tax = interest * taxRate;
+                let withdrawal = 0;
+
+                if (withdrawalFrequency === 'yearly') {
+                    withdrawal = withdrawalAmount;
+                } else if (withdrawalFrequency === 'monthly') {
+                    withdrawal = withdrawalAmount * 12;
+                }
+
+                balance = balance + interest - tax - withdrawal;
+
+                tableHTML += `<tr>
+                    <td>${year}</td>
+                    <td>${startingBalance.toFixed(2)}</td>
+                    <td>${interest.toFixed(2)}</td>
+                    <td>${tax.toFixed(2)}</td>
+                    <td>${withdrawal.toFixed(2)}</td>
+                    <td>${balance.toFixed(2)}</td>
+                </tr>`;
+            }
+
+            tableHTML += '</table>';
+            document.getElementById('result').innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>
