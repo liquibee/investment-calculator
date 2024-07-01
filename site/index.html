@@ -24,6 +24,20 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- MailerLite Universal -->
+    <script>
+        (function (w, d, e, u, f, l, n) {
+            w[f] = w[f] || function () {
+                (w[f].q = w[f].q || [])
+                    .push(arguments);
+            }, l = d.createElement(e), l.async = 1, l.src = u,
+                n = d.getElementsByTagName(e)[0], n.parentNode.insertBefore(l, n);
+        })
+            (window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
+        ml('account', '855225');
+    </script>
+    <!-- End MailerLite Universal -->
+
 </head>
 
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
@@ -60,9 +74,11 @@
                     <li>Upcoming book: "Introducing AI into Business Strategy"</li>
                     <li>An AI powered News Aggregator and Generator</li>
                 </ul>
-                <a href="#"
-                    class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 inline-block mt-2">Sign
+                <a href="javascript:void(0)" onclick="ml('show', 'FoList', true)"
+                    class="ml-onclick-form bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 inline-block mt-2">Sign
                     Up for Our Newsletter</a>
+                <a href="https://my.meetergo.com/hannes-lehmann/exploratory-call" target="_blank" rel="noopener noreferrer"
+                    class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 inline-block mt-2">Book a Meeting</a>
                 <p class="mt-4">
                     Want to rapidly launch your own SaaS? Check out our blueprint at
                     <a href="https://www.geniepy.com" target="_blank" rel="noopener noreferrer"
@@ -531,9 +547,11 @@
                             <li>Upcoming book: "Introducing AI into Business Strategy"</li>
                             <li>An AI powered News Aggregator and Generator</li>
                         </ul>
-                        <a href="#"
-                            class="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 inline-block mt-4 text-lg">Sign
+                        <a href="javascript:void(0)" onclick="ml('show', 'FoList', true)"
+                            class="ml-onclick-form bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 inline-block mt-4 text-lg">Sign
                             Up for Our Newsletter</a>
+                        <a href="https://my.meetergo.com/hannes-lehmann/exploratory-call" target="_blank" rel="noopener noreferrer"
+                            class="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 inline-block mt-4 text-lg">Book a Meeting</a>
                         <p class="mt-4 text-lg">
                             Want to rapidly launch your own SaaS? Check out our blueprint at
                             <a href="https://www.geniepy.com" target="_blank" rel="noopener noreferrer"
@@ -849,7 +867,7 @@
             const downloadButton = document.getElementById('downloadButton');
             const countdownText = document.getElementById('countdownText');
             const downloadButtonText = document.getElementById('downloadButtonText');
-            let secondsLeft = 1;
+            let secondsLeft = 5;
 
             downloadButton.disabled = true;
             downloadButton.classList.remove('bg-green-500', 'hover:bg-green-600');
