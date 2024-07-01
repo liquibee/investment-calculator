@@ -12,7 +12,7 @@ jobs:
       - name: Build website
         run: |
           mkdir public
-          zip public/index.zip index.html
+          cp index.html public/
 
       - name: Publish
         uses: cloudflare/pages-action@1
@@ -21,4 +21,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
           directory: public 
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GH_TOKEN }}
