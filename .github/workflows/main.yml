@@ -1,10 +1,5 @@
 name: Deploy Website
 
-permissions:
-  pull-requests: write
-  packages: write
-  contents: write
-
 on:
   push:
 
