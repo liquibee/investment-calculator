@@ -5,14 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Future Planner - Plan Your Financial Growth</title>
-    <meta name="description" content="Financial Future Planner helps you visualize and plan your financial future with our powerful calculator. Understand the impact of your investment strategies.">
-    <meta name="keywords" content="financial planner, financial growth, investment calculator, retirement planning, financial strategy">
+    <meta name="description"
+        content="Financial Future Planner helps you visualize and plan your financial future with our powerful calculator. Understand the impact of your investment strategies.">
+    <meta name="keywords"
+        content="financial planner, financial growth, investment calculator, retirement planning, financial strategy">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://calculator.liquibee.com/">
     <link rel="stylesheet" href="https://cdn.tailwindcss.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
 </head>
 
@@ -500,7 +510,8 @@
                 <a href="https://www.linkedin.com/company/sistemica" class="hover:text-blue-400"><i
                         class="fab fa-linkedin"></i></a>
                 <a href="https://x.com/sistemicaGmbH" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
-                <a href="https://github.com/hannes-sistemica" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/hannes-sistemica" class="hover:text-blue-400"><i
+                        class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
@@ -604,20 +615,20 @@
         }
 
         function calculate() {
-    const currency = document.getElementById('currency').value;
-    const locale = document.getElementById('locale').value;
-    const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
-    const costs = parseFloat(document.getElementById('costs').value) / 100;
-    const withdrawalTax = parseFloat(document.getElementById('withdrawalTax').value) / 100;
-    const years = parseInt(document.getElementById('years').value);
-    const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
-    const withdrawalIncrease = parseFloat(document.getElementById('withdrawalIncrease').value) / 100;
+            const currency = document.getElementById('currency').value;
+            const locale = document.getElementById('locale').value;
+            const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
+            const costs = parseFloat(document.getElementById('costs').value) / 100;
+            const withdrawalTax = parseFloat(document.getElementById('withdrawalTax').value) / 100;
+            const years = parseInt(document.getElementById('years').value);
+            const withdrawalFrequency = document.getElementById('withdrawalFrequency').value;
+            const withdrawalIncrease = parseFloat(document.getElementById('withdrawalIncrease').value) / 100;
 
-    let balance = startAmountValue;
-    let totalWithdrawalTax = 0;
-    let totalCosts = 0;
+            let balance = startAmountValue;
+            let totalWithdrawalTax = 0;
+            let totalCosts = 0;
 
-    let tableHTML = `
+            let tableHTML = `
 <div class="relative">
     <button id="downloadCSV" class="absolute top-2 right-2 p-2 bg-green-500 text-white rounded-full hover:bg-green-600" title="Download CSV">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -640,29 +651,29 @@
         <tbody>
 `;
 
-    const chartLabels = [];
-    const chartData = [];
-    let currentWithdrawalAmount = withdrawalAmountValue;
+            const chartLabels = [];
+            const chartData = [];
+            let currentWithdrawalAmount = withdrawalAmountValue;
 
-    for (let year = 1; year <= years; year++) {
-        const startingBalance = balance;
-        let interest = balance * annualReturn;
-        let yearCosts = balance * costs;
-        let withdrawal = 0;
-        let withdrawalTaxAmount = 0;
+            for (let year = 1; year <= years; year++) {
+                const startingBalance = balance;
+                let interest = balance * annualReturn;
+                let yearCosts = balance * costs;
+                let withdrawal = 0;
+                let withdrawalTaxAmount = 0;
 
-        if (withdrawalFrequency !== 'none') {
-            withdrawal = currentWithdrawalAmount * (withdrawalFrequency === 'monthly' ? 12 : 1);
-            withdrawalTaxAmount = withdrawal * withdrawalTax;
-            currentWithdrawalAmount *= (1 + withdrawalIncrease);
-        }
+                if (withdrawalFrequency !== 'none') {
+                    withdrawal = currentWithdrawalAmount * (withdrawalFrequency === 'monthly' ? 12 : 1);
+                    withdrawalTaxAmount = withdrawal * withdrawalTax;
+                    currentWithdrawalAmount *= (1 + withdrawalIncrease);
+                }
 
-        balance = balance + interest - yearCosts - withdrawal - withdrawalTaxAmount;
+                balance = balance + interest - yearCosts - withdrawal - withdrawalTaxAmount;
 
-        totalCosts += yearCosts;
-        totalWithdrawalTax += withdrawalTaxAmount;
+                totalCosts += yearCosts;
+                totalWithdrawalTax += withdrawalTaxAmount;
 
-        tableHTML += `
+                tableHTML += `
     <tr class="${year % 2 === 0 ? 'bg-gray-100' : ''}">
         <td class="border p-2">${year}</td>
         <td class="border p-2">${formatCurrency(startingBalance, currency, locale)}</td>
@@ -675,17 +686,17 @@
     </tr>
 `;
 
-        chartLabels.push(year);
-        chartData.push(balance);
-    }
+                chartLabels.push(year);
+                chartData.push(balance);
+            }
 
-    tableHTML += '</tbody></table></div>';
-    document.getElementById('result').innerHTML = tableHTML;
+            tableHTML += '</tbody></table></div>';
+            document.getElementById('result').innerHTML = tableHTML;
 
-    updateChart(chartLabels, chartData);
+            updateChart(chartLabels, chartData);
 
-    document.getElementById('downloadCSV').addEventListener('click', showCSVPopup);
-}
+            document.getElementById('downloadCSV').addEventListener('click', showCSVPopup);
+        }
 
         function updateChart(labels, data) {
             const ctx = document.getElementById('investmentChart').getContext('2d');
@@ -860,37 +871,37 @@
         }
 
         function downloadCSV() {
-    hideCSVPopup();
+            hideCSVPopup();
 
-    let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "Year,Starting Balance,Interest,Costs,Withdrawal,Withdrawal Tax,Ending Balance,Total Taxes & Costs\n";
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Year,Starting Balance,Interest,Costs,Withdrawal,Withdrawal Tax,Ending Balance,Total Taxes & Costs\n";
 
-    const rows = document.querySelectorAll("#result table tbody tr");
-    rows.forEach(row => {
-        const cells = row.querySelectorAll("td");
-        const rowData = Array.from(cells).map((cell, index) => {
-            // Remove all separators (currency symbols, commas, periods, hyphens, etc.) except for the year column
-            let cellText = cell.textContent.trim();
-            if (index !== 0) { // Skip the year column
-                cellText = cellText.replace(/[^0-9]/g, ''); // Remove everything except digits
-                // If the cellText is numeric, convert to a standard format and divide by 100
-                if (!isNaN(cellText) && cellText !== '') {
-                    cellText = (parseFloat(cellText) / 100).toFixed(2);
-                }
-            }
-            return cellText;
-        }).join(",");
-        csvContent += rowData + "\n";
-    });
+            const rows = document.querySelectorAll("#result table tbody tr");
+            rows.forEach(row => {
+                const cells = row.querySelectorAll("td");
+                const rowData = Array.from(cells).map((cell, index) => {
+                    // Remove all separators (currency symbols, commas, periods, hyphens, etc.) except for the year column
+                    let cellText = cell.textContent.trim();
+                    if (index !== 0) { // Skip the year column
+                        cellText = cellText.replace(/[^0-9]/g, ''); // Remove everything except digits
+                        // If the cellText is numeric, convert to a standard format and divide by 100
+                        if (!isNaN(cellText) && cellText !== '') {
+                            cellText = (parseFloat(cellText) / 100).toFixed(2);
+                        }
+                    }
+                    return cellText;
+                }).join(",");
+                csvContent += rowData + "\n";
+            });
 
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "financial_projection.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "financial_projection.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
         // Update the event listeners in the DOMContentLoaded event
         document.addEventListener('DOMContentLoaded', function () {
             detectUserSettings();
